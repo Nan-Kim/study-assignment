@@ -1,7 +1,9 @@
 const exec = require('child_process').exec;
 const util = require('util');
 const users = [
-  'naraekn'
+  'branch-1',
+  'branch-2',
+  'branch-3',
 ];
 
 let promise = Promise.resolve();
