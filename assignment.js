@@ -8,7 +8,7 @@ const users = [
 
 // Try 03: Use asynchronous generator
 
-function* pushOriginToEachBranch(branches) {
+async function* pushOriginToEachBranch(branches) {
   for (let i = 0; i < branches.length; i++) {
     await util.promisify(exec)(`git checkout ${branches[i]}`);
     await util.promisify(exec)(`git rebase upstream/master`);
