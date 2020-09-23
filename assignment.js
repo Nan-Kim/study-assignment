@@ -8,7 +8,7 @@ const users = [
 
 let promise = Promise.resolve();
 
-// Try 01: Test if it works
+// Try 02: Test if it works
 
 for(let i = 0; i < users.length; i++) {
   promise = promise.then(() => {
@@ -21,7 +21,7 @@ for(let i = 0; i < users.length; i++) {
     );
   }).then(() => {
     return util.promisify(exec)(
-      `git push upstream ${users[i]}`
+      `git push origin ${users[i]}`
     );
   })
 }
