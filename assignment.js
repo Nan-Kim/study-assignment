@@ -17,6 +17,8 @@ async function* pushOriginToEachBranch(branches) {
   }
 }
 
-for await (let branch of pushOriginToEachBranch(users)) {
-  console.log(`Push origin to ${branch}`);
-}
+(async () => {
+  for await (let branch of pushOriginToEachBranch(users)) {
+    console.log(`Push origin to ${branch}`);
+  }
+})();
