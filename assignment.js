@@ -19,7 +19,7 @@ async function* pushToEachBranch(branches) {
 }
 
 (async () => {
-  for await (let branch of pushToEachBranch(users)) {
-    console.log(`Push to ${branch}`);
+  for await (let user of pushToEachBranch(users)) {
+    console.log(`Push to ${user}`);
   }
 })();
