@@ -6,22 +6,17 @@ const users = [
   'branch-3',
 ];
 
-let promise = Promise.resolve();
+// Try 03: Use asynchronous generator
 
-// Try 02: Test if it works
+function* pushOriginToEachBranch(branches) {
+  for (let i = 0; i < branches.length; i++) {
+    await util.promisify(exec)(`git checkout ${branches[i]}`);
+    await util.promisify(exec)(`git rebase upstream/master`);
+    await util.promisify(exec)(`git push origin ${branches[i]}`);
+    yield branches[i];
+  }
+}
 
-for(let i = 0; i < users.length; i++) {
-  promise = promise.then(() => {
-    return util.promisify(exec)(
-      `git checkout ${users[i]}`
-    );
-  }).then(() => {
-    return util.promisify(exec)(
-      `git rebase upstream/master`
-    );
-  }).then(() => {
-    return util.promisify(exec)(
-      `git push origin ${users[i]}`
-    );
-  })
+for await (let branch of pushOriginToEachBranch(users)) {
+  console.log(`Push origin to ${branch}`);
 }
