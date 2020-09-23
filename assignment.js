@@ -11,7 +11,7 @@ let promise = Promise.resolve();
 for(let i = 0; i < users.length; i++) {
   promise = promise.then(() => {
     return util.promisify(exec)(
-      `git checkout ${users[i]}`
+      `git checkout -b ${users[i]}`
     );
   }).then(() => {
     return util.promisify(exec)(
